@@ -1,0 +1,148 @@
+/* QUICK RESET */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==================
+   GLOBALS  
+=====================*/
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+/* ==================
+   TYPOGRAPHY  
+=====================*/
+
+h2,
+h3 {
+  text-align: center;
+}
+
+p {
+  font-size: 2.4rem;
+}
+
+button {
+  font-size: 1.6rem;
+  padding: 0.4em 0.8em;
+}
+
+/* ==================
+   LAYOUT  
+=====================*/
+
+.container {
+  width: 90%;
+  max-width: 120rem;
+  height: 60rem;
+  margin: 7.2em auto;
+  display: flex;
+  border: solid 2px lime;
+}
+
+.section {
+  width: 50%;
+}
+
+/* SECTION GENERAL */
+
+.section-general {
+  border: solid 2px magenta;
+}
+
+.section-detail {
+  border: solid 2px red;
+}
+
+.name-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2.4em;
+}
+
+.sprite-container {
+  /* border: solid 2px blue; */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.sprite-big {
+  width: 100%;
+  image-rendering: pixelated;
+}
+
+.btn-general-container {
+  /* border: solid 2px green; */
+  display: flex;
+  justify-content: center;
+}
+
+.btn-general {
+  margin: 0 1.6em;
+}
+
+.info {
+  padding: 1em;
+  font-size: 2rem;
+}
+
+.search-bar {
+  width: 80%;
+  height: 3.2rem;
+}
+
+/* SECTION DETAIL */
+
+.stats-container {
+  display: flex;
+}
+
+.stats {
+  background-color: antiquewhite;
+  width: 50%;
+}
+
+.types {
+  width: 50%;
+  background-color: grey;
+  padding: 5px;
+}
+
+.type-label {
+  font-size: 1.8rem;
+  background-color: lightgray;
+  text-align: center;
+  margin: 5px;
+}
+
+.stats ul li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.evolution-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.evolution {
+  border: solid 2px purple;
+}
+
+.evolution img {
+  width: 100%;
+}

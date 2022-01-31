@@ -18,7 +18,7 @@ export const App = () => {
   const randomID = Math.floor(Math.random() * 898 + 1);
 
   // Set default ID
-  const [id, setId] = useState(1);
+  const [id, setId] = useState(10);
 
   // ----------------
   const onTermChange = (e) => {
@@ -27,7 +27,6 @@ export const App = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
     setId(searchTerm);
   };
 
@@ -60,7 +59,7 @@ export const App = () => {
           sprites={pokemon?.sprites}
           name={pokemon?.name}
         />
-        <Info speciesURL={pokemon?.species?.url} />
+        <Info pokemon={pokemon || "???"} id={pokemon?.id || 0} />
       </section>
       {/* End Section General */}
 

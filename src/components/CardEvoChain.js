@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import bulbasaur from "../img/bulbasaur.png";
-import { fetchPokemonUrl } from "../apis/pokeAPI";
+import { fetchEvoChain } from "../apis/pokeAPI";
 
-export const CardEvolution = () => {
+export const CardEvoChain = () => {
   return (
     <div className="evolution">
       <h3>I</h3>

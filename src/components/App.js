@@ -8,7 +8,7 @@ import { Info } from "./Info";
 import { SearchBar } from "./SearchBar";
 import { Stats } from "./Stats";
 import { Types } from "./Types";
-import { CardEvolution } from "./CardEvolution";
+import { CardEvoChain } from "./CardEvoChain";
 
 export const App = () => {
   const [pokemon, setPokemon] = useState({});
@@ -70,9 +70,9 @@ export const App = () => {
           <Types types={pokemon?.types} />
         </div>
         <div className="evolution-container">
-          <CardEvolution />
-          <CardEvolution />
-          <CardEvolution />
+          <CardEvoChain />
+          <CardEvoChain />
+          <CardEvoChain />
         </div>
       </section>
       {/* End Section Detail */}

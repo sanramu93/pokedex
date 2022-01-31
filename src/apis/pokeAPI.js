@@ -1,6 +1,6 @@
 export const fetchPokemon = async (id = 1) => {
   try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -8,9 +8,9 @@ export const fetchPokemon = async (id = 1) => {
   }
 };
 
-export const fetchSpecies = async (id) => {
+export const fetchSpecies = async (id = 2) => {
   try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon-species/" + id);
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -18,11 +18,17 @@ export const fetchSpecies = async (id) => {
   }
 };
 
-// export const fetchEvolutionChain = async (id = 1) => {
-//   const species = await fetchPokemonUrl(
-//     `https://pokeapi.co/api/v2/evolution-chain/${id}`
-//   );
-//   console.log(species);
-// };
+export const fetchEvoChain = async (id = 1) => {
+  let url = "";
+  // Fetch species first
+  try {
+    const data = await fetchSpecies(id);
+    url = await data.evolution_chain;
+  } catch (err) {
+    console.log(err);
+  }
 
-// fetchEvolutionChain();
+  // Fetch evolution chain
+  console.log(url);
+};
+fetchEvoChain();

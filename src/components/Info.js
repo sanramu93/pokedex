@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { fetchPokemonUrl } from "../apis/pokeAPI";
+import { fetchSpecies } from "../apis/pokeAPI";
 import { BtnGeneral } from "./BtnGeneral";
 
-export const Info = ({ speciesURL }) => {
+export const Info = ({ pokemon, id }) => {
   const [entryId, setEntryId] = useState(0);
   const [entries, setEntries] = useState([]);
 
@@ -21,9 +21,10 @@ export const Info = ({ speciesURL }) => {
 
   // -------------
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchPokemonUrl(speciesURL);
+    if (id === 0) return;
 
+    const fetchData = async () => {
+      const data = await fetchSpecies(id);
       const allEntries = data?.flavor_text_entries;
 
       let englishEntries = allEntries?.filter(
@@ -41,8 +42,9 @@ export const Info = ({ speciesURL }) => {
 
       setEntries(englishEntries?.map((entry) => entry.flavor_text));
     };
+
     fetchData();
-  }, [speciesURL]);
+  }, [pokemon]);
 
   // -------------
 

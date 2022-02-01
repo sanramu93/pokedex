@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { fetchPokemon } from "../apis/pokeAPI";
+import { fetchPokemon, fetchEvoChain } from "../apis/pokeAPI";
 
 import { NameHeader } from "./NameHeader";
 import { Sprite } from "./Sprite";
@@ -12,13 +12,14 @@ import { CardEvoChain } from "./CardEvoChain";
 
 export const App = () => {
   const [pokemon, setPokemon] = useState({});
+  const [evoChain, setEvoChain] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   // Random ID for testing
   const randomID = Math.floor(Math.random() * 898 + 1);
 
   // Set default ID
-  const [id, setId] = useState(10);
+  const [id, setId] = useState(133);
 
   // ----------------
   const onTermChange = (e) => {
@@ -35,8 +36,10 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetchPokemon(id);
-        setPokemon(res);
+        const pokemonResponse = await fetchPokemon(id);
+        setPokemon(pokemonResponse);
+        const evoChainResponse = await fetchEvoChain(id);
+        setEvoChain(evoChainResponse);
       } catch (err) {
         console.log(err);
       }
@@ -69,10 +72,10 @@ export const App = () => {
           <Stats stats={pokemon?.stats || "???"} />
           <Types types={pokemon?.types} />
         </div>
-        <div className="evolution-container">
-          <CardEvoChain />
-          <CardEvoChain />
-          <CardEvoChain />
+        <div className="evo-chain-container">
+          {evoChain.map((evo) => (
+            <CardEvoChain key={evo.species_name} evoId={evo.species_name} />
+          ))}
         </div>
       </section>
       {/* End Section Detail */}

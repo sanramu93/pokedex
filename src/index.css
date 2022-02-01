@@ -133,14 +133,16 @@ button {
   justify-content: space-between;
 }
 
-.evolution-container {
-  display: flex;
-  justify-content: center;
+.evo-chain-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding: 2rem;
 }
 
 .evolution {
   border: solid 2px purple;
+  width: 15rem;
+  height: 15rem;
 }
 
 .evolution img {

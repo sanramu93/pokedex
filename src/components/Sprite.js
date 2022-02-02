@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import notFound from "../img/not-found.png";
 
-import { BtnGeneral } from "./BtnGeneral";
+import { Button } from "./Button";
 
 export const Sprite = ({ pokemon, sprites, name }) => {
   const [sprite, setSprite] = useState("");
@@ -53,15 +53,15 @@ export const Sprite = ({ pokemon, sprites, name }) => {
   }, [orientation, shiny, gender]);
 
   return (
-    <>
-      <div className="sprite-container">
-        <img className="sprite-big" src={sprite || notFound} alt={name} />
+    <div className="sprite-container">
+      <div className="sprite-image">
+        <img className="sprite-image-big" src={sprite || notFound} alt={name} />
       </div>
-      <div className="btn-general-container">
-        <BtnGeneral label={"Gender"} onClick={changeGender} />
-        <BtnGeneral label={"Shiny"} onClick={changeToShiny} />
-        <BtnGeneral label={"Rotate"} onClick={rotateSprite} />
+      <div className="sprite-btn-container">
+        <Button label={"Gender"} onClick={changeGender} />
+        <Button label={"Shiny"} onClick={changeToShiny} />
+        <Button label={"Rotate"} onClick={rotateSprite} />
       </div>
-    </>
+    </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { fetchPokemon, fetchEvoChain } from "../apis/pokeAPI";
 
-import { NameHeader } from "./NameHeader";
+import { Header } from "./Header";
 import { Sprite } from "./Sprite";
 import { Info } from "./Info";
 import { SearchBar } from "./SearchBar";
@@ -11,9 +11,10 @@ import { Types } from "./Types";
 import { CardEvoChain } from "./CardEvoChain";
 import { Moves } from "./Moves";
 import { PokemonNav } from "./PokemonNav";
+import { Button } from "./Button";
 
 export const App = () => {
-  const pokemonCount = 898;
+  const POKEMON_COUNT = 898;
 
   const [pokemon, setPokemon] = useState({});
   const [evoChain, setEvoChain] = useState([]);
@@ -37,13 +38,13 @@ export const App = () => {
 
   const nextPokemon = () => {
     let newId = id;
-    newId < pokemonCount ? newId++ : (newId = 1);
+    newId < POKEMON_COUNT ? newId++ : (newId = 1);
     setId(newId);
   };
 
   const prevPokemon = () => {
     let newId = id;
-    newId > 1 ? newId-- : (newId = pokemonCount);
+    newId > 1 ? newId-- : (newId = POKEMON_COUNT);
     setId(newId);
   };
 
@@ -64,10 +65,10 @@ export const App = () => {
   }, [id]);
 
   return (
-    <main className="container">
-      {/* Section General */}
-      <section className="section section-general">
-        <NameHeader name={pokemon?.name || ""} id={pokemon?.id || 0} />
+    <main>
+      {/* ----Section Left---- */}
+      <section className="section section-left">
+        <Header name={pokemon?.name || ""} id={pokemon?.id || 0} />
         <SearchBar
           onTermChange={onTermChange}
           onFormSubmit={onFormSubmit}
@@ -80,33 +81,31 @@ export const App = () => {
         />
         <Info pokemon={pokemon || "???"} id={pokemon?.id || 0} />
       </section>
-      {/* End Section General */}
+      {/* ----End Section Left---- */}
 
-      {/* Section Detail */}
-      <section className="section section-detail">
+      {/* ---Section Right--- */}
+      <section className="section section-right">
         <div className="stats-container">
           <Stats stats={pokemon?.stats || "???"} />
           <Types types={pokemon?.types} />
         </div>
         <div className="evo-chain-container">
+          <Button label="<" />
           {evoChain.map((evo) => (
             <CardEvoChain key={evo.species_name} evoId={evo.species_name} />
           ))}
+          <Button label=">" />
         </div>
 
-        <div className="moves-container">
-          <Moves moves={pokemon?.moves} />
-        </div>
+        <Moves moves={pokemon?.moves} />
 
-        <div className="pokemon-nav-container">
-          <PokemonNav
-            id={id}
-            prevPokemon={prevPokemon}
-            nextPokemon={nextPokemon}
-          />
-        </div>
+        <PokemonNav
+          id={id}
+          prevPokemon={prevPokemon}
+          nextPokemon={nextPokemon}
+        />
       </section>
-      {/* End Section Detail */}
+      {/* ---End Section Right--- */}
     </main>
   );
 };

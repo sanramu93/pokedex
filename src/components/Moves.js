@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { BtnGeneral } from "./BtnGeneral";
+import { Button } from "./Button";
 import { fetchMove } from "../apis/pokeAPI";
 
 export const Moves = ({ id, moves }) => {
@@ -36,7 +36,7 @@ export const Moves = ({ id, moves }) => {
   // console.log(moveUrl);
 
   return (
-    <>
+    <div className="moves-container">
       <div className="moves">
         <h3>{move?.name || "-"}</h3>
         <div className="move-stats">
@@ -58,9 +58,9 @@ export const Moves = ({ id, moves }) => {
       </div>
 
       <div className="moves-btn-container">
-        <BtnGeneral label="up" onClick={prevMove} />
-        <BtnGeneral label="down" onClick={nextMove} />
+        <Button label="up" onClick={prevMove} />
+        <Button label="down" onClick={nextMove} />
       </div>
-    </>
+    </div>
   );
 };

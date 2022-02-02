@@ -17,7 +17,7 @@
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 /* ==================
@@ -29,12 +29,7 @@ h3 {
   text-align: center;
 }
 
-p {
-  font-size: 2.4rem;
-}
-
 button {
-  font-size: 1.6rem;
   padding: 0.4em 0.8em;
 }
 
@@ -42,14 +37,13 @@ button {
    LAYOUT  
 =====================*/
 
-.container {
-  width: 90%;
+main {
+  background-color: lightgray;
+  width: 100%;
   max-width: 120rem;
-  height: 60rem;
   padding: 3.6rem;
   margin: 7.2em auto;
   display: flex;
-  border: solid 2px lime;
 }
 
 .section {
@@ -59,56 +53,72 @@ button {
   justify-content: space-between;
 }
 
-/* SECTION GENERAL */
+/* ==================
+   SECTION LEFT  
+=====================*/
 
-.section-general {
-  border: solid 2px magenta;
+.section-left {
+  background-color: lightpink;
 }
 
-.section-detail {
-  border: solid 2px red;
+.section-right {
+  background-color: lightskyblue;
 }
 
-.name-header {
+.header {
+  background-color: lightgreen;
+  font-size: 2.4rem;
   display: flex;
   justify-content: space-between;
-  padding: 0 2.4em;
+  padding: 1.6rem 2.4em;
 }
 
-.sprite-container {
-  /* border: solid 2px blue; */
+.search-bar {
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar > input {
+  font-size: 2.4rem;
+  padding: 0.5rem 1rem;
+}
+
+.sprite-image {
+  background-color: lightseagreen;
   width: 50%;
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
 
-.sprite-big {
+.sprite-image-big {
   width: 100%;
   image-rendering: pixelated;
 }
 
-.btn-general-container {
-  /* border: solid 2px green; */
+.sprite-btn-container {
   display: flex;
   justify-content: center;
 }
 
-.btn-general {
-  margin: 0 1.6em;
+.info-container {
+  background-color: lightcyan;
 }
 
 .info {
   padding: 1em;
-  font-size: 2rem;
 }
 
-.search-bar {
-  width: 80%;
-  height: 3.2rem;
+.info-btn-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-/* SECTION DETAIL */
+/* ==================
+   SECTION RIGHT  
+=====================*/
 
 .stats-container {
   display: flex;
@@ -117,12 +127,13 @@ button {
 .stats {
   background-color: antiquewhite;
   width: 50%;
+  padding: 1rem;
 }
 
 .types {
-  width: 50%;
   background-color: grey;
-  padding: 5px;
+  width: 50%;
+  padding: 1rem;
 }
 
 .type-label {
@@ -138,20 +149,19 @@ button {
 }
 
 .evo-chain-container {
-  display: grid;
-  border: solid lime 2px;
-  margin: 0 auto;
+  background-color: lightseagreen;
   width: 100%;
-  column-gap: 0.5rem;
-  row-gap: 3.6rem;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 2rem;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .evolution {
   border: solid 2px purple;
   width: 12rem;
   height: 12rem;
+  margin: 0 1.6rem;
 }
 
 .evolution img {
@@ -159,22 +169,21 @@ button {
   image-rendering: pixelated;
 }
 
-.evopokemon-name {
+.evo-pokemon-name {
   text-align: center;
   border: solid 1px ligh;
 }
 
 .moves-container {
-  border: solid 1px red;
+  background-color: lightyellow;
   width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
 .moves {
-  border: solid 1px lime;
-  width: 60%;
+  background-color: lightgray;
+  width: 80%;
 }
 
 .move-stats {
@@ -184,7 +193,10 @@ button {
 
 .moves-btn-container {
   display: flex;
+  width: 20%;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokemon-nav-container {

@@ -21,7 +21,7 @@ export const CardEvoChain = (evoId) => {
   return (
     <figure className="evolution">
       <img src={evoPokemon?.sprites?.front_default} />
-      <figcaption className="evopokemon-name">{evoPokemon?.name}</figcaption>
+      <figcaption className="evo-pokemon-name">{evoPokemon?.name}</figcaption>
     </figure>
   );
 };

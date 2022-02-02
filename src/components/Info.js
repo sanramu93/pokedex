@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { fetchSpecies } from "../apis/pokeAPI";
-import { BtnGeneral } from "./BtnGeneral";
+import { Button } from "./Button";
 
 export const Info = ({ pokemon, id }) => {
   const [entryId, setEntryId] = useState(0);
@@ -53,9 +53,9 @@ export const Info = ({ pokemon, id }) => {
       <p className="info">
         {entries?.[entryId] || "Invalid Pokemon name or ID"}
       </p>
-      <div className="btn-container">
-        <BtnGeneral label="prevInfo" onClick={prevInfo} />
-        <BtnGeneral label="nextInfo" onClick={nextInfo} />
+      <div className="info-btn-container">
+        <Button label="prevInfo" onClick={prevInfo} />
+        <Button label="nextInfo" onClick={nextInfo} />
       </div>
     </div>
   );

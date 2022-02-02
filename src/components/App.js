@@ -9,8 +9,12 @@ import { SearchBar } from "./SearchBar";
 import { Stats } from "./Stats";
 import { Types } from "./Types";
 import { CardEvoChain } from "./CardEvoChain";
+import { Moves } from "./Moves";
+import { PokemonNav } from "./PokemonNav";
 
 export const App = () => {
+  const pokemonCount = 898;
+
   const [pokemon, setPokemon] = useState({});
   const [evoChain, setEvoChain] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +23,7 @@ export const App = () => {
   const randomID = Math.floor(Math.random() * 898 + 1);
 
   // Set default ID
-  const [id, setId] = useState(133);
+  const [id, setId] = useState(1);
 
   // ----------------
   const onTermChange = (e) => {
@@ -31,15 +35,27 @@ export const App = () => {
     setId(searchTerm);
   };
 
+  const nextPokemon = () => {
+    let newId = id;
+    newId < pokemonCount ? newId++ : (newId = 1);
+    setId(newId);
+  };
+
+  const prevPokemon = () => {
+    let newId = id;
+    newId > 1 ? newId-- : (newId = pokemonCount);
+    setId(newId);
+  };
+
   // Fetch Pokemon
   //  ----------------
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const pokemonResponse = await fetchPokemon(id);
-        setPokemon(pokemonResponse);
-        const evoChainResponse = await fetchEvoChain(id);
-        setEvoChain(evoChainResponse);
+        const pokemonData = await fetchPokemon(id);
+        setPokemon(pokemonData);
+        const evoChainData = await fetchEvoChain(id);
+        setEvoChain(evoChainData);
       } catch (err) {
         console.log(err);
       }
@@ -76,6 +92,18 @@ export const App = () => {
           {evoChain.map((evo) => (
             <CardEvoChain key={evo.species_name} evoId={evo.species_name} />
           ))}
+        </div>
+
+        <div className="moves-container">
+          <Moves moves={pokemon?.moves} />
+        </div>
+
+        <div className="pokemon-nav-container">
+          <PokemonNav
+            id={id}
+            prevPokemon={prevPokemon}
+            nextPokemon={nextPokemon}
+          />
         </div>
       </section>
       {/* End Section Detail */}

@@ -21,7 +21,7 @@ export const Info = ({ pokemon, id }) => {
 
   // -------------
   useEffect(() => {
-    if (id === 0) return;
+    if (!id) return;
 
     const fetchData = async () => {
       const data = await fetchSpecies(id);
@@ -54,8 +54,8 @@ export const Info = ({ pokemon, id }) => {
         {entries?.[entryId] || "Invalid Pokemon name or ID"}
       </p>
       <div className="btn-container">
-        <BtnGeneral label="previous" onClick={prevInfo} />
-        <BtnGeneral label="next" onClick={nextInfo} />
+        <BtnGeneral label="prevInfo" onClick={prevInfo} />
+        <BtnGeneral label="nextInfo" onClick={nextInfo} />
       </div>
     </div>
   );

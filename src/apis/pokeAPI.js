@@ -8,7 +8,7 @@ export const fetchPokemon = async (id = 1) => {
   }
 };
 
-export const fetchSpecies = async (id = 2) => {
+export const fetchSpecies = async (id = 1) => {
   try {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
     const data = await res.json();
@@ -18,10 +18,18 @@ export const fetchSpecies = async (id = 2) => {
   }
 };
 
-/*
----------------------------------------------------
-Fetching Evolution Chain
-*/
+export const fetchMove = async (url) => {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//---------------------------------------------------
+//Fetching Evolution Chain
 
 export const getEvoChainUrl = async (id = 1) => {
   let evoChainUrl = "";
@@ -43,7 +51,7 @@ export const fetchEvoChain = async (id = "eevee") => {
     const response = await fetch(url);
     const data = await response.json();
 
-    // Getting evolution chain (not my code) ->
+    // Getting evolution chain ->
     //  https://stackoverflow.com/questions/39112862/pokeapi-angular-how-to-get-pokemons-evolution-chain
 
     let evoChain = [];

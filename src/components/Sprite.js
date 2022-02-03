@@ -9,6 +9,8 @@ export const Sprite = ({ pokemon, sprites, name }) => {
   const [shiny, setShiny] = useState(false);
   const [gender, setGender] = useState("default");
 
+  // -----------------------
+
   const changeSprite = () => {
     let spriteKey = `${orientation}_${gender}`;
 
@@ -24,22 +26,22 @@ export const Sprite = ({ pokemon, sprites, name }) => {
   };
 
   const changeGender = () => {
-    if (sprites?.front_female) {
+    if (sprites?.front_female)
       gender === "default" ? setGender("female") : setGender("default");
-    }
   };
 
   const rotateSprite = () => {
-    if (sprites?.back_default) {
+    if (sprites?.back_default)
       orientation === "front"
         ? setOrientation("back")
         : setOrientation("front");
-    }
   };
 
   const changeToShiny = () => {
     !shiny ? setShiny(true) : setShiny(false);
   };
+
+  // -----------------------
 
   useEffect(() => {
     setOrientation("front");

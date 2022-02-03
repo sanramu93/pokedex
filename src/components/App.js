@@ -13,20 +13,16 @@ import { Moves } from "./Moves";
 import { PokemonNav } from "./PokemonNav";
 import { Button } from "./Button";
 
+// ----------------
+
 export const App = () => {
   const POKEMON_COUNT = 898;
 
   const [pokemon, setPokemon] = useState({});
   const [evoChain, setEvoChain] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Random ID for testing
-  const randomID = Math.floor(Math.random() * 898 + 1);
-
-  // Set default ID
   const [id, setId] = useState(1);
 
-  // ----------------
   const onTermChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -48,6 +44,11 @@ export const App = () => {
     setId(newId);
   };
 
+  const randomPokemon = () => {
+    const randomID = Math.floor(Math.random() * POKEMON_COUNT + 1);
+    setId(randomID);
+  };
+
   // Fetch Pokemon
   //  ----------------
   useEffect(() => {
@@ -64,22 +65,20 @@ export const App = () => {
     fetchData();
   }, [id]);
 
+  //  ----------------
+
   return (
     <main>
       {/* ----Section Left---- */}
       <section className="section section-left">
-        <Header name={pokemon?.name || ""} id={pokemon?.id || 0} />
-        <SearchBar
-          onTermChange={onTermChange}
-          onFormSubmit={onFormSubmit}
-          searchTerm={searchTerm}
-        />
+        <Header name={pokemon?.name || "???"} id={pokemon?.id || "???"} />
+        <SearchBar onTermChange={onTermChange} onFormSubmit={onFormSubmit} />
         <Sprite
-          pokemon={pokemon || "???"}
+          pokemon={pokemon}
           sprites={pokemon?.sprites}
-          name={pokemon?.name}
+          name={pokemon?.name || "???"}
         />
-        <Info pokemon={pokemon || "???"} id={pokemon?.id || 0} />
+        <Info pokemon={pokemon || "???"} id={pokemon?.id || "???"} />
       </section>
       {/* ----End Section Left---- */}
 
@@ -100,9 +99,9 @@ export const App = () => {
         <Moves moves={pokemon?.moves} />
 
         <PokemonNav
-          id={id}
           prevPokemon={prevPokemon}
           nextPokemon={nextPokemon}
+          randomPokemon={randomPokemon}
         />
       </section>
       {/* ---End Section Right--- */}

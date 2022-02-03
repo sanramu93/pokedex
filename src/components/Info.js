@@ -9,13 +9,13 @@ export const Info = ({ pokemon, id }) => {
 
   const nextInfo = () => {
     let newId = entryId;
-    newId < entries.length - 1 ? newId++ : (newId = 0);
+    newId < entries?.length - 1 ? newId++ : (newId = 0);
     setEntryId(newId);
   };
 
   const prevInfo = () => {
     let newId = entryId;
-    newId > 0 ? newId-- : (newId = entries.length - 1);
+    newId > 0 ? newId-- : (newId = entries?.length - 1);
     setEntryId(newId);
   };
 
@@ -25,6 +25,7 @@ export const Info = ({ pokemon, id }) => {
 
     const fetchData = async () => {
       const data = await fetchSpecies(id);
+
       const allEntries = data?.flavor_text_entries;
 
       let englishEntries = allEntries?.filter(

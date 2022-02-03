@@ -14,14 +14,13 @@ import { PokemonNav } from "./PokemonNav";
 import { Button } from "./Button";
 
 // ----------------
+const POKEMON_COUNT = 898;
 
 export const App = () => {
-  const POKEMON_COUNT = 898;
-
   const [pokemon, setPokemon] = useState({});
   const [evoChain, setEvoChain] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [id, setId] = useState(1);
+  const [id, setId] = useState(492);
 
   const onTermChange = (e) => {
     setSearchTerm(e.target.value);
@@ -30,10 +29,12 @@ export const App = () => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     setId(searchTerm);
+    e.target.reset();
   };
 
   const nextPokemon = () => {
-    let newId = id;
+    let newId;
+    newId = id;
     newId < POKEMON_COUNT ? newId++ : (newId = 1);
     setId(newId);
   };
@@ -56,6 +57,7 @@ export const App = () => {
       try {
         const pokemonData = await fetchPokemon(id);
         setPokemon(pokemonData);
+        setId(pokemonData.id);
         const evoChainData = await fetchEvoChain(id);
         setEvoChain(evoChainData);
       } catch (err) {
@@ -64,6 +66,8 @@ export const App = () => {
     };
     fetchData();
   }, [id]);
+
+  console.log(pokemon);
 
   //  ----------------
 
@@ -76,7 +80,7 @@ export const App = () => {
         <Sprite
           pokemon={pokemon}
           sprites={pokemon?.sprites}
-          name={pokemon?.name || "???"}
+          name={pokemon?.name}
         />
         <Info pokemon={pokemon || "???"} id={pokemon?.id || "???"} />
       </section>
@@ -90,14 +94,12 @@ export const App = () => {
         </div>
         <div className="evo-chain-container">
           <Button label="<" />
-          {evoChain.map((evo) => (
+          {evoChain?.map((evo) => (
             <CardEvoChain key={evo.species_name} evoId={evo.species_name} />
           ))}
           <Button label=">" />
         </div>
-
         <Moves moves={pokemon?.moves} />
-
         <PokemonNav
           prevPokemon={prevPokemon}
           nextPokemon={nextPokemon}

@@ -5,7 +5,7 @@ export const fetchPokemon = async (id = "") => {
     const data = await res.json();
     return data;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -15,7 +15,7 @@ export const fetchSpecies = async (id = 1) => {
     const data = await res.json();
     return data;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -39,7 +39,7 @@ export const getEvoChainUrl = async (id = 1) => {
     const data = await fetchSpecies(id);
     evoChainUrl = await data.evolution_chain.url;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 
   // Fetch evolution chain
@@ -87,6 +87,6 @@ export const fetchEvoChain = async (id = "eevee") => {
 
     return evoChain;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };

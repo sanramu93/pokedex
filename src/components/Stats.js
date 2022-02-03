@@ -7,8 +7,8 @@ export const Stats = ({ stats }) => {
 
     return stats.map((item, i) => (
       <li key={i}>
-        <span className="stat-name">{item?.stat?.name}</span>
-        <span className="stat-number">{item.base_stat}</span>
+        <span className="stat-name">{item?.stat?.name || "???"}</span>
+        <span className="stat-number">{item.base_stat || "???"}</span>
       </li>
     ));
   };

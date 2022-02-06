@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
 /* QUICK RESET */
 
 *,
@@ -14,10 +16,24 @@
 
 :root {
   font-size: 62.5%;
+
+  /* TYPOGRAPHY */
+  --ff-monsterrat: "Montserrat", sans-serif;
+
+  --fs-small: 1.2rem;
+  --fs-normal: 1.6rem;
+  --fs-big: 2.4rem;
+  --fs-very-big: 2.4rem;
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 600;
 }
 
 body {
   font-size: 1.6rem;
+  font-weight: var(--fw-normal);
+  font-family: var(--ff-monsterrat);
 }
 
 /* ==================
@@ -27,6 +43,14 @@ body {
 h2,
 h3 {
   text-align: center;
+}
+
+h2 {
+  font-size: var(--fs-big);
+}
+
+input {
+  font-size: var(--fs-normal);
 }
 
 button {
@@ -39,7 +63,7 @@ button {
 
 main {
   background-color: lightgray;
-  width: 100%;
+  width: 95%;
   max-width: 120rem;
   padding: 3.6rem;
   margin: 7.2em auto;
@@ -48,17 +72,32 @@ main {
 
 .section {
   width: 50%;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* max-width: 800px */
+@media (max-width: 50em) {
+  main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section {
+    width: 100%;
+  }
+}
 /* ==================
    SECTION LEFT  
 =====================*/
 
 .section-left {
   background-color: lightpink;
+  margin-right: 2em;
 }
 
 .section-right {
@@ -91,6 +130,7 @@ main {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  z-index: 1000;
 }
 
 .sprite-image-big {
@@ -114,6 +154,14 @@ main {
 .info-btn-container {
   display: flex;
   justify-content: space-between;
+}
+
+/* max-width: 800px */
+@media (max-width: 50em) {
+  .section-left {
+    margin-right: 0;
+    margin-bottom: 2em;
+  }
 }
 
 /* ==================
@@ -150,6 +198,8 @@ main {
 
 .evo-chain-container {
   background-color: lightseagreen;
+  overflow-x: scroll;
+  scroll-margin-inline-start: 0;
   width: 100%;
   height: 35%;
   display: flex;
@@ -159,6 +209,9 @@ main {
 
 .evolution {
   border: solid 2px purple;
+
+  background-size: cover;
+  background-position: center;
   width: 12rem;
   height: 12rem;
   margin: 0 1.6rem;
@@ -166,6 +219,7 @@ main {
 
 .evolution img {
   width: 100%;
+  min-width: 12rem;
   image-rendering: pixelated;
 }
 
@@ -213,4 +267,22 @@ main {
 .pokemon-id {
   display: flex;
   flex-direction: column;
+}
+
+/* ==================
+   HELPERS  
+=====================*/
+
+.jc-start {
+  justify-content: flex-start;
+}
+
+/* DISABLED STATES */
+.section-disabled::before {
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.713);
+  position: absolute;
+  z-index: 1000;
 }

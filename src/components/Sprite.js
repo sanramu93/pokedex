@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import RotateRightIcon from "@material-ui/icons/RotateRight";
+import SportsGolfIcon from "@material-ui/icons/SportsGolf";
+
 import notFound from "../img/not-found.png";
 
 import { Button } from "./Button";
@@ -60,9 +63,9 @@ export const Sprite = ({ pokemon, sprites, name }) => {
         <img className="sprite-image-big" src={sprite || notFound} alt={name} />
       </div>
       <div className="sprite-btn-container">
-        <Button label={"Gender"} onClick={changeGender} />
+        <Button icon={<SportsGolfIcon />} onClick={changeGender} />
         <Button label={"Shiny"} onClick={changeToShiny} />
-        <Button label={"Rotate"} onClick={rotateSprite} />
+        <Button icon={<RotateRightIcon />} onClick={rotateSprite} />
       </div>
     </div>
   );

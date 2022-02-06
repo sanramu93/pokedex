@@ -8,7 +8,7 @@ export const Types = ({ types }) => {
         <p key={type?.type?.name} className="type-label">
           {type?.type?.name.toUpperCase()}
         </p>
-      )) || "???"}
+      )) || ""}
     </div>
   );
 };

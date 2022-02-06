@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 import { Button } from "./Button";
 import { fetchMove } from "../apis/pokeAPI";
+
+import { capitalize } from "../utilities/utilities";
 
 export const Moves = ({ id, moves }) => {
   // console.clear();
@@ -35,28 +39,28 @@ export const Moves = ({ id, moves }) => {
   return (
     <div className="moves-container">
       <div className="moves">
-        <h3>{move?.name || "???"}</h3>
+        <h3>{capitalize(move?.name) || "Not Found"}</h3>
         <div className="move-stats">
           <span className="move-name">Accuracy</span>
-          <span className="move-number">{move?.accuracy || "???"}</span>
+          <span className="move-number">{move?.accuracy || "-"}</span>
         </div>
         <div className="move-stats">
           <span className="move-name">Power</span>
-          <span className="move-number">{move?.power || "???"}</span>
+          <span className="move-number">{move?.power || "-"}</span>
         </div>
         <div className="move-stats">
           <span className="move-name">PP</span>
-          <span className="move-number">{move?.pp || "???"}</span>
+          <span className="move-number">{move?.pp || "-"}</span>
         </div>
         <div className="move-stats">
           <span className="move-name">Type</span>
-          <span className="move-number">{move?.type?.name || "???"}</span>
+          <span className="move-number">{move?.type?.name || "-"}</span>
         </div>
       </div>
 
       <div className="moves-btn-container">
-        <Button label="up" onClick={prevMove} />
-        <Button label="down" onClick={nextMove} />
+        <Button icon={<KeyboardArrowUpIcon />} onClick={prevMove} />
+        <Button icon={<KeyboardArrowDownIcon />} onClick={nextMove} />
       </div>
     </div>
   );

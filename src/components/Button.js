@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export const Button = ({ label, onClick }) => {
+export const Button = ({ icon, label, onClick }) => {
   return (
     <button onClick={onClick} className="button">
-      {label}
+      {icon || label}
     </button>
   );
 };

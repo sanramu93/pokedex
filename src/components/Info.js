@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 import { fetchSpecies } from "../apis/pokeAPI";
 import { Button } from "./Button";
@@ -52,11 +54,11 @@ export const Info = ({ pokemon, id }) => {
   return (
     <div className="info-container">
       <p className="info">
-        {entries?.[entryId] || "Invalid Pokemon name or ID"}
+        {pokemon ? entries?.[entryId] : "Invalid Pokemon name or ID"}
       </p>
       <div className="info-btn-container">
-        <Button label="prevInfo" onClick={prevInfo} />
-        <Button label="nextInfo" onClick={nextInfo} />
+        <Button icon={<ArrowBackIosIcon />} onClick={prevInfo} />
+        <Button icon={<ArrowForwardIosIcon />} onClick={nextInfo} />
       </div>
     </div>
   );

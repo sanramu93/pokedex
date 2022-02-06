@@ -3,8 +3,8 @@ import React from "react";
 export const Header = ({ name, id }) => {
   return (
     <div className="header">
-      <p>{name || ""}</p>
-      <p>{`No. ${id}` || ""}</p>
+      <h2>{name || ""}</h2>
+      <h2>{`No. ${id}` || ""}</h2>
     </div>
   );
 };

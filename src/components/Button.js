@@ -1,6 +1,6 @@
-export const Button = ({ className, icon, label, onClick }) => {
+export const Button = ({ icon, label, onClick }) => {
   return (
-    <button className={className || ""} onClick={onClick} className="button">
+    <button onClick={onClick} className="button">
       {icon || label}
     </button>
   );

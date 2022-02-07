@@ -18,14 +18,12 @@ https://coolors.co/palette/011627-fdfffc-2ec4b6-e71d36-ff9f1c
    GLOBALS  
 =====================*/
 
-:root {
+html {
   font-size: 62.5%;
-  height: 100vh;
-
   /* TYPOGRAPHY */
   --ff-monsterrat: "Montserrat", sans-serif;
 
-  --fs-small: 1.2rem;
+  --fs-small: 1.4rem;
   --fs-normal: 1.6rem;
   --fs-big: 2.4rem;
   --fs-very-big: 2.4rem;
@@ -50,7 +48,7 @@ https://coolors.co/palette/011627-fdfffc-2ec4b6-e71d36-ff9f1c
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: var(--fs-normal);
   font-weight: var(--fw-normal);
   font-family: var(--ff-monsterrat);
   background: var(--clr-blue-dark);
@@ -66,46 +64,53 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-button,
-button:visited {
+button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--clr-red-dark);
+  border: none;
+  color: var(--clr-white);
   font-weight: var(--fw-bold);
   width: 4rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--clr-red-dark);
-  color: var(--clr-white);
-  border: none;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
 
-button:hover,
 button:active {
   background-color: var(--clr-yellow);
   color: var(--clr-blue-dark);
 }
 
+@media (hover: hover) {
+  button:hover {
+    background-color: var(--clr-yellow);
+    color: var(--clr-blue-dark);
+  }
+}
+
 button svg {
   font-size: 2.4rem !important;
 }
+
 /* ==================
    TYPOGRAPHY  
 =====================*/
 
 h2,
-h3 {
+h3,
+input,
+.type-label,
+.evo-pokemon-name {
   text-align: center;
 }
 
-h2 {
+h2,
+input,
+.header {
   font-size: var(--fs-big);
-}
-
-input {
-  font-size: var(--fs-normal);
 }
 
 /* ==================
@@ -113,26 +118,25 @@ input {
 =====================*/
 
 main {
+  display: flex;
+  justify-content: center;
   background: var(--clr-red);
   width: 95%;
   max-width: 120rem;
   border-radius: var(--br-normal);
-  padding: 2em;
+  padding: 1em;
   margin: 0 auto;
   margin-top: 5em;
-  display: flex;
 }
 
 .section {
   width: 50%;
-  color: var(--clr-white);
-  padding: 2em;
-  position: relative;
   display: flex;
   flex-direction: column;
+  color: var(--clr-white);
+  padding: 2em;
   justify-content: space-between;
   border-radius: var(--br-normal);
-  overflow: hidden;
 }
 
 /* max-width: 800px */
@@ -158,7 +162,6 @@ main {
 }
 
 .header {
-  font-size: 2.4rem;
   display: flex;
   justify-content: space-between;
   padding-bottom: 0.5em;
@@ -172,9 +175,7 @@ main {
 
 .search-bar > input {
   font-family: var(--ff-monsterrat);
-  font-size: var(--fs-big);
   color: var(--clr-blue-dark);
-  text-align: center;
   margin-top: 1em;
   padding: 0.2em 0.5em;
   background-color: var(--clr-white);
@@ -191,11 +192,11 @@ main {
   background-color: var(--clr-green-light);
   border: solid 4px var(--clr-white);
   border-radius: var(--br-normal);
+  image-rendering: pixelated;
 }
 
 .sprite-image-big {
   width: 100%;
-  image-rendering: pixelated;
 }
 
 .sprite-btn-container {
@@ -213,25 +214,31 @@ main {
   align-items: center;
   background-color: var(--clr-white);
   color: var(--clr-blue-dark);
+  font-size: var(--fs-small);
   border-radius: var(--br-normal);
-  min-height: 14rem;
-  max-height: 14rem;
-  padding: 1em;
+  min-height: 12rem;
+  max-height: 12rem;
+  padding: 0.4em 0.8em;
+  /* overflow-y: scroll; */
 }
 
 .info {
   padding: 0 1em;
 }
 
-.info-container button,
-.info-container button:visited {
+.info-container button {
   background: none;
   color: var(--clr-blue-dark);
 }
 
-.info-container button:hover,
 .info-container button:active {
   color: var(--clr-red);
+}
+
+@media (hover: hover) {
+  .info-container button:hover {
+    color: var(--clr-red);
+  }
 }
 
 /* max-width: 800px */
@@ -256,21 +263,18 @@ main {
   border-bottom: solid 2px var(--clr-red-light);
 }
 
-.stats {
-  width: 50%;
-  padding: 1rem;
-}
-
+.stats,
 .types {
   width: 50%;
-  padding: 1rem;
+}
+
+.stats {
+  margin-right: 1em;
 }
 
 .type-label {
-  font-size: 1.8rem;
-
-  text-align: center;
-  margin: 5px;
+  margin: 0.5em;
+  border: 2px solid white;
 }
 
 .stats ul li {
@@ -296,25 +300,37 @@ main {
 .evolution-image {
   width: 10rem;
   margin: 0 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s ease-out;
 }
 
-.evo-pokemon-name {
-  text-align: center;
+.evolution-image:active {
+  border: solid 2px var(--clr-yellow);
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .evolution-image:hover {
+    border: solid 4px var(--clr-yellow);
+    opacity: 1;
+  }
 }
 
 .moves-container {
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .moves {
-  width: 85%;
+  width: 100%;
 }
 
 .move-stats {
   display: flex;
   justify-content: space-between;
+  padding-right: 2em;
+  border-right: solid 2px var(--clr-red-light);
 }
 
 .moves-btn-container {
@@ -324,18 +340,18 @@ main {
   align-items: center;
 }
 .moves-btn-container button {
-  margin: 0.5em 0;
+  background: none;
+  color: var(--clr-blue-dark-trans);
 }
 
-.moves-btn-container button,
-.moves-btn-container button:visited {
-  background: var(--clr-red);
-  color: var(--clr-blue-dark);
-}
-
-.moves-btn-container button:hover,
 .moves-btn-container button:active {
-  background: var(--clr-yellow);
+  color: var(--clr-white);
+}
+
+@media (hover: hover) {
+  .moves-btn-container button:hover {
+    color: var(--clr-white);
+  }
 }
 
 .pokemon-nav-container {
@@ -353,17 +369,13 @@ main {
 }
 
 .pokemon-id {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 /* ==================
    HELPERS  
 =====================*/
-
-.jc-start {
-  justify-content: flex-start;
-}
 
 /* DISABLED STATES */
 .section-disabled::before {

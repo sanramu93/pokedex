@@ -45,12 +45,19 @@ html {
   /* BORDER RADIUS */
   --br-small: 6px;
   --br-normal: 8px;
+
+  /* BOX SHADOW */
+  --box-sh-normal: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  --box-sh-dark: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 body {
   font-size: var(--fs-normal);
   font-weight: var(--fw-normal);
   font-family: var(--ff-monsterrat);
+  height: 100vh;
   background: var(--clr-blue-dark);
   background: -webkit-linear-gradient(
     135deg,
@@ -76,6 +83,7 @@ button {
   aspect-ratio: 1;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: var(--box-sh-normal);
   transition: all 0.3s ease-out;
 }
 
@@ -113,6 +121,15 @@ input,
   font-size: var(--fs-big);
 }
 
+/* max-width: 615px */
+@media (max-width: 38.43em) {
+  h2,
+  input,
+  .header {
+    font-size: var(--fs-normal);
+  }
+}
+
 /* ==================
    LAYOUT  
 =====================*/
@@ -121,11 +138,11 @@ main {
   display: flex;
   justify-content: center;
   background: var(--clr-red);
-  width: 95%;
+  width: 90%;
   max-width: 120rem;
   border-radius: var(--br-normal);
   padding: 1em;
-  margin: 0 auto;
+  margin: 2em auto;
   margin-top: 5em;
 }
 
@@ -137,10 +154,14 @@ main {
   padding: 2em;
   justify-content: space-between;
   border-radius: var(--br-normal);
+  box-shadow: var(--box-sh-dark);
 }
 
 /* max-width: 800px */
-@media (max-width: 50em) {
+@media (max-width: 61.25em) {
+  body {
+    height: auto;
+  }
   main {
     width: 80%;
     display: flex;
@@ -150,6 +171,16 @@ main {
 
   .section {
     width: 100%;
+  }
+}
+
+/* max-width: 615px */
+@media (max-width: 38.43em) {
+  body {
+    font-size: var(--fs-small);
+  }
+  main {
+    /* margin-top: 1em; */
   }
 }
 /* ==================
@@ -175,6 +206,7 @@ main {
 
 .search-bar > input {
   font-family: var(--ff-monsterrat);
+  font-weight: var(--fw-bold);
   color: var(--clr-blue-dark);
   margin-top: 1em;
   padding: 0.2em 0.5em;
@@ -186,6 +218,7 @@ main {
 .sprite-image,
 .evolution-image {
   width: 50%;
+
   display: flex;
   justify-content: center;
   margin: 1em auto;
@@ -193,6 +226,10 @@ main {
   border: solid 4px var(--clr-white);
   border-radius: var(--br-normal);
   image-rendering: pixelated;
+}
+
+.sprite-image {
+  min-width: 20rem;
 }
 
 .sprite-image-big {
@@ -212,6 +249,7 @@ main {
 .info-container {
   display: flex;
   align-items: center;
+  min-height: 16rem;
   background-color: var(--clr-white);
   color: var(--clr-blue-dark);
   font-size: var(--fs-small);
@@ -228,6 +266,7 @@ main {
 
 .info-container button {
   background: none;
+  box-shadow: none;
   color: var(--clr-blue-dark);
 }
 
@@ -241,11 +280,22 @@ main {
   }
 }
 
-/* max-width: 800px */
-@media (max-width: 50em) {
+@media (max-width: 61.25em) {
   .section-left {
     margin-right: 0;
     margin-bottom: 2em;
+  }
+}
+
+/* max-width: 615px */
+@media (max-width: 38.43em) {
+  .section-left input {
+    font-size: var(--fs-normal);
+    width: 70%;
+  }
+
+  .info-container {
+    display: none;
   }
 }
 
@@ -260,7 +310,6 @@ main {
 .stats-container {
   display: flex;
   padding-bottom: 1em;
-  border-bottom: solid 2px var(--clr-red-light);
 }
 
 .stats,
@@ -283,10 +332,12 @@ main {
 }
 
 .evo-chain-container {
+  background-color: var(--clr-red-light);
+  border-radius: var(--br-normal);
   overflow-x: scroll;
   scroll-margin-inline-start: 0;
   width: 100%;
-  height: 35%;
+
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -320,6 +371,7 @@ main {
 .moves-container {
   display: flex;
   justify-content: space-between;
+  padding-top: 1em;
 }
 
 .moves {
@@ -341,6 +393,7 @@ main {
 }
 .moves-btn-container button {
   background: none;
+  box-shadow: none;
   color: var(--clr-blue-dark-trans);
 }
 
@@ -355,7 +408,8 @@ main {
 }
 
 .pokemon-nav-container {
-  background-color: var(--clr-red-light);
+  margin-top: 2em;
+  /* background-color: var(--clr-red-light); */
   border-radius: var(--br-normal);
   display: flex;
   justify-content: center;
@@ -366,6 +420,34 @@ main {
   padding: 1em 0;
   width: 50%;
   justify-content: space-between;
+}
+
+.pokemon-nav button {
+  background-color: var(--clr-blue-dark);
+}
+
+.pokemon-nav button:active {
+  background-color: var(--clr-yellow);
+}
+
+@media (hover: hover) {
+  .pokemon-nav button:active {
+    background-color: var(--clr-yellow);
+  }
+}
+
+/* max-width: 615px */
+@media (max-width: 38.43em) {
+  .evo-chain-container {
+    overflow-x: scroll;
+    scroll-margin-inline-start: 0;
+    padding: 1rem;
+    justify-content: flex-start;
+  }
+
+  .pokemon-nav {
+    width: 80%;
+  }
 }
 
 /* ==================

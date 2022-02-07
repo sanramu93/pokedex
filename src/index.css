@@ -368,14 +368,13 @@ main {
   justify-content: space-between;
 }
 
-.pokemon-id {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
 /* ==================
    HELPERS  
 =====================*/
+
+.jc-start {
+  justify-content: flex-start;
+}
 
 /* DISABLED STATES */
 .section-disabled::before {

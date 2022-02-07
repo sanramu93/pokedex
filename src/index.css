@@ -1,3 +1,7 @@
+/* COLOR PALETTE
+https://coolors.co/palette/011627-fdfffc-2ec4b6-e71d36-ff9f1c
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
 
 /* QUICK RESET */
@@ -16,6 +20,7 @@
 
 :root {
   font-size: 62.5%;
+  height: 100vh;
 
   /* TYPOGRAPHY */
   --ff-monsterrat: "Montserrat", sans-serif;
@@ -28,14 +33,64 @@
   --fw-light: 300;
   --fw-normal: 400;
   --fw-bold: 600;
+
+  /* COLORS */
+  --clr-blue-dark: hsl(207, 95%, 8%);
+  --clr-blue-dark-trans: hsla(208, 95%, 8%, 0.8);
+  --clr-white: hsl(100, 100%, 99%);
+  --clr-green-light: hsl(174, 62%, 47%);
+  --clr-red: hsl(353, 81%, 51%);
+  --clr-red-light: hsl(353, 81%, 58%);
+  --clr-red-dark: hsl(353, 81%, 40%);
+  --clr-yellow: hsl(35, 100%, 55%);
+
+  /* BORDER RADIUS */
+  --br-small: 6px;
+  --br-normal: 8px;
 }
 
 body {
   font-size: 1.6rem;
   font-weight: var(--fw-normal);
   font-family: var(--ff-monsterrat);
+  background: var(--clr-blue-dark);
+  background: -webkit-linear-gradient(
+    135deg,
+    hsl(207, 95%, 18%),
+    hsl(207, 95%, 8%)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    135deg,
+    hsl(207, 95%, 18%),
+    hsl(207, 95%, 8%)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+button,
+button:visited {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--fw-bold);
+  width: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--clr-red-dark);
+  color: var(--clr-white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+button:hover,
+button:active {
+  background-color: var(--clr-yellow);
+  color: var(--clr-blue-dark);
+}
+
+button svg {
+  font-size: 2.4rem !important;
+}
 /* ==================
    TYPOGRAPHY  
 =====================*/
@@ -53,29 +108,31 @@ input {
   font-size: var(--fs-normal);
 }
 
-button {
-  padding: 0.4em 0.8em;
-}
-
 /* ==================
    LAYOUT  
 =====================*/
 
 main {
-  background-color: lightgray;
+  background: var(--clr-red);
   width: 95%;
   max-width: 120rem;
-  padding: 3.6rem;
-  margin: 7.2em auto;
+  border-radius: var(--br-normal);
+  padding: 2em;
+  margin: 0 auto;
+  margin-top: 5em;
   display: flex;
 }
 
 .section {
   width: 50%;
+  color: var(--clr-white);
+  padding: 2em;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: var(--br-normal);
+  overflow: hidden;
 }
 
 /* max-width: 800px */
@@ -96,41 +153,44 @@ main {
 =====================*/
 
 .section-left {
-  background-color: lightpink;
+  background-color: var(--clr-red-light);
   margin-right: 2em;
 }
 
-.section-right {
-  background-color: lightskyblue;
-}
-
 .header {
-  background-color: lightgreen;
   font-size: 2.4rem;
   display: flex;
   justify-content: space-between;
-  padding: 1.6rem 2.4em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--clr-white);
 }
 
 .search-bar {
-  background-color: lightgoldenrodyellow;
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .search-bar > input {
-  font-size: 2.4rem;
-  padding: 0.5rem 1rem;
+  font-family: var(--ff-monsterrat);
+  font-size: var(--fs-big);
+  color: var(--clr-blue-dark);
+  text-align: center;
+  margin-top: 1em;
+  padding: 0.2em 0.5em;
+  background-color: var(--clr-white);
+  border-radius: var(--br-small);
+  border: none;
 }
 
-.sprite-image {
-  background-color: lightseagreen;
+.sprite-image,
+.evolution-image {
   width: 50%;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  z-index: 1000;
+  margin: 1em auto;
+  background-color: var(--clr-green-light);
+  border: solid 4px var(--clr-white);
+  border-radius: var(--br-normal);
 }
 
 .sprite-image-big {
@@ -141,19 +201,37 @@ main {
 .sprite-btn-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 1em;
+}
+
+.sprite-btn-container button {
+  margin: 0 1em;
 }
 
 .info-container {
-  background-color: lightcyan;
-}
-
-.info {
+  display: flex;
+  align-items: center;
+  background-color: var(--clr-white);
+  color: var(--clr-blue-dark);
+  border-radius: var(--br-normal);
+  min-height: 14rem;
+  max-height: 14rem;
   padding: 1em;
 }
 
-.info-btn-container {
-  display: flex;
-  justify-content: space-between;
+.info {
+  padding: 0 1em;
+}
+
+.info-container button,
+.info-container button:visited {
+  background: none;
+  color: var(--clr-blue-dark);
+}
+
+.info-container button:hover,
+.info-container button:active {
+  color: var(--clr-red);
 }
 
 /* max-width: 800px */
@@ -168,25 +246,29 @@ main {
    SECTION RIGHT  
 =====================*/
 
+.section-right {
+  background-color: var(--clr-red-dark);
+}
+
 .stats-container {
   display: flex;
+  padding-bottom: 1em;
+  border-bottom: solid 2px var(--clr-red-light);
 }
 
 .stats {
-  background-color: antiquewhite;
   width: 50%;
   padding: 1rem;
 }
 
 .types {
-  background-color: grey;
   width: 50%;
   padding: 1rem;
 }
 
 .type-label {
   font-size: 1.8rem;
-  background-color: lightgray;
+
   text-align: center;
   margin: 5px;
 }
@@ -197,7 +279,6 @@ main {
 }
 
 .evo-chain-container {
-  background-color: lightseagreen;
   overflow-x: scroll;
   scroll-margin-inline-start: 0;
   width: 100%;
@@ -208,36 +289,27 @@ main {
 }
 
 .evolution {
-  border: solid 2px purple;
-
   background-size: cover;
   background-position: center;
-  width: 12rem;
-  height: 12rem;
-  margin: 0 1.6rem;
 }
 
-.evolution img {
-  width: 100%;
-  min-width: 12rem;
-  image-rendering: pixelated;
+.evolution-image {
+  width: 10rem;
+  margin: 0 1em;
 }
 
 .evo-pokemon-name {
   text-align: center;
-  border: solid 1px ligh;
 }
 
 .moves-container {
-  background-color: lightyellow;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .moves {
-  background-color: lightgray;
-  width: 80%;
+  width: 85%;
 }
 
 .move-stats {
@@ -247,21 +319,37 @@ main {
 
 .moves-btn-container {
   display: flex;
-  width: 20%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.moves-btn-container button {
+  margin: 0.5em 0;
+}
+
+.moves-btn-container button,
+.moves-btn-container button:visited {
+  background: var(--clr-red);
+  color: var(--clr-blue-dark);
+}
+
+.moves-btn-container button:hover,
+.moves-btn-container button:active {
+  background: var(--clr-yellow);
+}
 
 .pokemon-nav-container {
-  border: solid blue 2px;
+  background-color: var(--clr-red-light);
+  border-radius: var(--br-normal);
   display: flex;
   justify-content: center;
 }
 
 .pokemon-nav {
   display: flex;
-  padding: 2.4rem;
+  padding: 1em 0;
+  width: 50%;
+  justify-content: space-between;
 }
 
 .pokemon-id {

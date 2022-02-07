@@ -20,7 +20,10 @@ export const EvoChain = ({ evoId }) => {
 
   return (
     <figure className="evolution">
-      <img src={evoPokemon?.sprites?.front_default || ""} />
+      <img
+        className="evolution-image"
+        src={evoPokemon?.sprites?.front_default || ""}
+      />
       <figcaption className="evo-pokemon-name">
         {capitalize(evoPokemon?.name)}
       </figcaption>

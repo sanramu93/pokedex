@@ -52,14 +52,14 @@ export const Info = ({ pokemon, id }) => {
   // -------------
 
   return (
-    <div className="info-container">
-      <p className="info">
-        {pokemon ? entries?.[entryId] : "Invalid Pokemon name or ID"}
-      </p>
-      <div className="info-btn-container">
+    <>
+      <div className="info-container">
         <Button icon={<ArrowBackIosIcon />} onClick={prevInfo} />
+        <p className="info">
+          {pokemon ? entries?.[entryId] : "Invalid Pokemon name or ID"}
+        </p>
         <Button icon={<ArrowForwardIosIcon />} onClick={nextInfo} />
       </div>
-    </div>
+    </>
   );
 };

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-
-export const Button = ({ icon, label, onClick }) => {
+export const Button = ({ className, icon, label, onClick }) => {
   return (
-    <button onClick={onClick} className="button">
+    <button className={className || ""} onClick={onClick} className="button">
       {icon || label}
     </button>
   );

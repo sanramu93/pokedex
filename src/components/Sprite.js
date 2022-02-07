@@ -64,7 +64,7 @@ export const Sprite = ({ pokemon, sprites, name }) => {
       </div>
       <div className="sprite-btn-container">
         <Button icon={<SportsGolfIcon />} onClick={changeGender} />
-        <Button label={"Shiny"} onClick={changeToShiny} />
+        <Button class={"btn-shiny"} label={"Shiny"} onClick={changeToShiny} />
         <Button icon={<RotateRightIcon />} onClick={rotateSprite} />
       </div>
     </div>

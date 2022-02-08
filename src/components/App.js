@@ -11,6 +11,8 @@ import { Types } from "./Types";
 import { EvoChain } from "./EvoChain";
 import { Moves } from "./Moves";
 import { PokemonNav } from "./PokemonNav";
+import { LoaderCircular } from "./LoaderCircular";
+import { LoaderLinear } from "./LoaderLinear";
 
 import { capitalize } from "../utilities/utilities";
 
@@ -23,10 +25,10 @@ export const App = () => {
   const [pokemon, setPokemon] = useState({});
   const [evoChain, setEvoChain] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [id, setId] = useState(133);
+  const [id, setId] = useState(1);
 
   const onTermChange = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchTerm(e.target.value.toLowerCase());
   };
 
   const onFormSubmit = (e) => {
@@ -79,9 +81,13 @@ export const App = () => {
   //  ----------------
 
   return (
-    <main>
+    <main className={`${!pokemon ? "main-disabled" : ""}`}>
       {/* ----Section Left---- */}
-      <section className="section section-left">
+      <section
+        className={`section section-left ${
+          !pokemon ? "section-left-disabled" : ""
+        }`}
+      >
         <Header
           name={pokemon ? capitalize(pokemon?.name) : "Not Found"}
           id={pokemon ? pokemon?.id : "?"}
@@ -99,7 +105,7 @@ export const App = () => {
       {/* ---Section Right--- */}
       <section
         className={`section section-right ${
-          !pokemon ? "section-disabled" : ""
+          !pokemon ? "section-right-disabled" : ""
         }`}
       >
         <div className="stats-container">

@@ -108,10 +108,10 @@ export const App = () => {
           !pokemon ? "section-right-disabled" : ""
         }`}
       >
-        <div className="stats-container">
+        <ul className="stats-container">
           <Stats stats={pokemon?.stats || ""} />
           <Types types={pokemon?.types} />
-        </div>
+        </ul>
         <div
           className={`evo-chain-container ${
             evoChain.length > 3 ? "jc-start" : ""

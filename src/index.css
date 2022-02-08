@@ -14,6 +14,10 @@ https://coolors.co/palette/011627-fdfffc-2ec4b6-e71d36-ff9f1c
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 /* ==================
    GLOBALS  
 =====================*/
@@ -42,6 +46,26 @@ html {
   --clr-red-dark: hsl(353, 81%, 35%);
   --clr-yellow: hsl(35, 100%, 55%);
   --clr-black-disabled: hsla(0, 0%, 0%, 0.7);
+
+  /* Types colors */
+  --clr-type-normal: #bc8f8f;
+  --clr-type-grass: #2b8a3e;
+  --clr-type-fire: #e03131;
+  --clr-type-water: #1971c2;
+  --clr-type-fighting: #8b4513;
+  --clr-type-flying: #4dabf7;
+  --clr-type-poison: #862e9c;
+  --clr-type-ground: #e67700;
+  --clr-type-rock: #c19a6b;
+  --clr-type-bug: #74b816;
+  --clr-type-ghost: #748ffc;
+  --clr-type-electric: #f59f00;
+  --clr-type-psychic: #fb607f;
+  --clr-type-ice: #66d9e8;
+  --clr-type-dragon: #5c7cfa;
+  --clr-type-dark: #321414;
+  --clr-type-steel: #868e96;
+  --clr-type-fairy: #ff66cc;
 
   /* OPACITY */
   --opacity-disabled: 0.4;
@@ -102,7 +126,7 @@ button:active {
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-disabled);
   cursor: default;
 }
 
@@ -113,6 +137,15 @@ button:disabled:active {
 
 button svg {
   font-size: 2.4rem !important;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding: 0.25em 0;
+  border-bottom: 1px solid var(--clr-white);
 }
 
 /* ==================
@@ -388,10 +421,14 @@ main {
   }
 }
 
+.moves-title {
+  margin-top: 1em;
+}
+
 .moves-container {
   display: flex;
   justify-content: space-between;
-  padding-top: 1em;
+  padding-top: 0.5em;
 }
 
 .moves {
@@ -401,8 +438,7 @@ main {
 .move-stats {
   display: flex;
   justify-content: space-between;
-  padding-right: 2em;
-  border-right: solid 2px var(--clr-red-light);
+  margin-right: 2em;
 }
 
 .moves-btn-container {
@@ -410,6 +446,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-left: solid 2px var(--clr-red-light);
 }
 .moves-btn-container button {
   background: none;
@@ -476,6 +513,77 @@ main {
 
 .jc-start {
   justify-content: flex-start;
+}
+
+/* Type Colors */
+.normal {
+  background-color: var(--clr-type-normal);
+}
+
+.grass {
+  background-color: var(--clr-type-grass);
+}
+
+.fire {
+  background-color: var(--clr-type-fire);
+}
+
+.water {
+  background-color: var(--clr-type-water);
+}
+
+.fighting {
+  background-color: var(--clr-type-fighting);
+}
+
+.flying {
+  background-color: var(--clr-type-flying);
+}
+
+.poison {
+  background-color: var(--clr-type-poison);
+}
+
+.ground {
+  background-color: var(--clr-type-ground);
+}
+
+.rock {
+  background-color: var(--clr-type-rock);
+}
+
+.bug {
+  background-color: var(--clr-type-bug);
+}
+
+.ghost {
+  background-color: var(--clr-type-ghost);
+}
+
+.electric {
+  background-color: var(--clr-type-electric);
+}
+
+.psychic {
+  background-color: var(--clr-type-psychic);
+}
+
+.ice {
+  background-color: var(--clr-type-ice);
+}
+
+.dragon {
+  background-color: var(--clr-type-dragon);
+}
+
+.dark {
+  background-color: var(--clr-type-dark);
+}
+.steel {
+  background-color: var(--clr-type-steel);
+}
+.fairy {
+  background-color: var(--clr-type-fairy);
 }
 
 /* DISABLED STATES */

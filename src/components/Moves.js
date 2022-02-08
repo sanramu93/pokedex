@@ -37,31 +37,33 @@ export const Moves = ({ id, moves }) => {
   }, [moves, moveId]);
 
   return (
-    <div className="moves-container">
-      <div className="moves">
-        <h3>{capitalize(move?.name) || "Not Found"}</h3>
-        <div className="move-stats">
-          <span className="move-name">Accuracy</span>
-          <span className="move-number">{move?.accuracy || "-"}</span>
-        </div>
-        <div className="move-stats">
-          <span className="move-name">Power</span>
-          <span className="move-number">{move?.power || "-"}</span>
-        </div>
-        <div className="move-stats">
-          <span className="move-name">PP</span>
-          <span className="move-number">{move?.pp || "-"}</span>
-        </div>
-        <div className="move-stats">
-          <span className="move-name">Type</span>
-          <span className="move-number">{move?.type?.name || "-"}</span>
-        </div>
-      </div>
+    <>
+      <h3 className="moves-title">{capitalize(move?.name) || "Not Found"}</h3>
+      <div className="moves-container">
+        <ul className="moves">
+          <li className="move-stats">
+            <span className="move-name">Accuracy</span>
+            <span className="move-number">{move?.accuracy || "-"}</span>
+          </li>
+          <li className="move-stats">
+            <span className="move-name">Power</span>
+            <span className="move-number">{move?.power || "-"}</span>
+          </li>
+          <li className="move-stats">
+            <span className="move-name">PP</span>
+            <span className="move-number">{move?.pp || "-"}</span>
+          </li>
+          <li className="move-stats">
+            <span className="move-name">Type</span>
+            <span className="move-number">{move?.type?.name || "-"}</span>
+          </li>
+        </ul>
 
-      <div className="moves-btn-container">
-        <Button icon={<KeyboardArrowUpIcon />} onClick={prevMove} />
-        <Button icon={<KeyboardArrowDownIcon />} onClick={nextMove} />
+        <div className="moves-btn-container">
+          <Button icon={<KeyboardArrowUpIcon />} onClick={prevMove} />
+          <Button icon={<KeyboardArrowDownIcon />} onClick={nextMove} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };

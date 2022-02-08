@@ -5,7 +5,7 @@ export const Types = ({ types }) => {
     <div className="types">
       <h2>TYPES</h2>
       {types?.map((type) => (
-        <p key={type?.type?.name} className="type-label">
+        <p key={type?.type?.name} className={`type-label ${type?.type?.name}`}>
           {type?.type?.name.toUpperCase()}
         </p>
       )) || ""}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { fetchPokemon, fetchEvoChain } from "../apis/pokeAPI";
 
 import { Header } from "./Header";
@@ -11,8 +10,6 @@ import { Types } from "./Types";
 import { EvoChain } from "./EvoChain";
 import { Moves } from "./Moves";
 import { PokemonNav } from "./PokemonNav";
-import { LoaderCircular } from "./LoaderCircular";
-import { LoaderLinear } from "./LoaderLinear";
 
 import { capitalize } from "../utilities/utilities";
 
@@ -56,7 +53,9 @@ export const App = () => {
   };
 
   const randomPokemon = () => {
+    console.log(pokemon);
     const randomID = Math.floor(Math.random() * POKEMON_COUNT + 1);
+    // console.log(randomID);
     setId(randomID);
   };
 

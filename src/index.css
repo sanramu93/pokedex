@@ -42,8 +42,8 @@ html {
   --clr-white: hsl(100, 100%, 99%);
   --clr-green-light: hsl(174, 62%, 47%);
   --clr-red: hsl(353, 81%, 51%);
-  --clr-red-light: hsl(353, 81%, 58%);
-  --clr-red-dark: hsl(353, 81%, 35%);
+  --clr-red-light: hsl(353, 81%, 70%);
+  --clr-red-dark: hsl(353, 81%, 40%);
   --clr-yellow: hsl(35, 100%, 55%);
   --clr-black-disabled: hsla(0, 0%, 0%, 0.7);
 
@@ -103,7 +103,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--clr-red-dark);
+  background: var(--clr-blue-dark);
   border: none;
   color: var(--clr-white);
   font-weight: var(--fw-bold);
@@ -186,7 +186,7 @@ input::placeholder {
 main {
   display: flex;
   justify-content: center;
-  background: var(--clr-red);
+  background: var(--clr-red-dark);
   width: 90%;
   max-width: 120rem;
   border-radius: var(--br-normal);
@@ -197,6 +197,18 @@ main {
 }
 
 .section {
+  background: #e52d27; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #b31217,
+    #e52d27
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #b31217,
+    #e52d27
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -240,7 +252,6 @@ main {
 =====================*/
 
 .section-left {
-  background-color: var(--clr-red-light);
   margin-right: 2em;
 }
 
@@ -356,18 +367,17 @@ main {
    SECTION RIGHT  
 =====================*/
 
-.section-right {
-  background-color: var(--clr-red-dark);
-}
-
 .stats-container {
   display: flex;
   padding-bottom: 1em;
 }
 
-.stats,
+.stats {
+  width: 60%;
+}
+
 .types {
-  width: 50%;
+  width: 40%;
 }
 
 .stats {
@@ -385,7 +395,6 @@ main {
 }
 
 .evo-chain-container {
-  background-color: var(--clr-red-light);
   border-radius: var(--br-normal);
   overflow-x: scroll;
   scroll-margin-inline-start: 0;

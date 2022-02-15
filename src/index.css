@@ -411,6 +411,27 @@ main {
   padding: 1rem;
 }
 
+/* Scrollbar always visible */
+
+.evo-chain-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.evo-chain-container::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+.evo-chain-container::-webkit-scrollbar-thumb {
+  background-color: var(--clr-red-dark);
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+}
+
+.evo-chain-container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
 .evolution {
   background-size: cover;
   background-position: center;
@@ -511,10 +532,15 @@ main {
 /* max-width: 615px */
 @media (max-width: 38.43em) {
   .evo-chain-container {
-    overflow-x: scroll;
     scroll-margin-inline-start: 0;
     padding: 1rem;
     justify-content: flex-start;
+  }
+
+  /* Scrollbar always visible */
+
+  .evo-chain-container::-webkit-scrollbar:horizontal {
+    height: 8px;
   }
 
   .pokemon-nav-container {

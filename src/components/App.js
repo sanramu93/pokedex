@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { fetchPokemon, fetchEvoChain } from "../apis/pokeAPI";
+import React, { useState, useEffect, useCallback } from "react";
+import { debounce } from "lodash";
 
+import { fetchPokemon, fetchEvoChain } from "../apis/pokeAPI";
 import { Header } from "./Header";
 import { Sprite } from "./Sprite";
 import { Info } from "./Info";
@@ -34,11 +35,19 @@ export const App = () => {
     e.target.reset();
   };
 
+  // Debounced limits api calls from the user after 200ms
+  const debouncedSetId = useCallback(
+    debounce((pokemonID) => {
+      setId(pokemonID);
+    }, 200),
+    []
+  );
+
   const nextPokemon = () => {
     let newId;
     newId = id;
     newId < POKEMON_COUNT ? newId++ : (newId = 1);
-    setId(newId);
+    debouncedSetId(newId);
   };
 
   const prevPokemon = () => {
@@ -48,15 +57,12 @@ export const App = () => {
     } else {
       newId = POKEMON_COUNT;
     }
-
-    setId(newId);
+    debouncedSetId(newId);
   };
 
   const randomPokemon = () => {
-    console.log(pokemon);
     const randomID = Math.floor(Math.random() * POKEMON_COUNT + 1);
-    // console.log(randomID);
-    setId(randomID);
+    debouncedSetId(randomID);
   };
 
   // Fetch Pokemon

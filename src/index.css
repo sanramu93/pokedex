@@ -148,6 +148,11 @@ ul li {
   border-bottom: 1px solid var(--clr-white);
 }
 
+a {
+  color: var(--clr-white);
+  text-decoration: none;
+}
+
 /* ==================
    TYPOGRAPHY  
 =====================*/
@@ -396,6 +401,7 @@ main {
 
 .evo-chain-container {
   border-radius: var(--br-normal);
+  border: solid 2px var(--clr-white);
   overflow-x: scroll;
   scroll-margin-inline-start: 0;
   width: 100%;
@@ -511,6 +517,11 @@ main {
     justify-content: flex-start;
   }
 
+  .pokemon-nav-container {
+    margin-top: 0;
+    order: -1;
+  }
+
   .pokemon-nav {
     width: 80%;
   }
@@ -602,12 +613,12 @@ main {
 }
 
 .section-left-disabled {
-  background-color: var(--clr-black-disabled);
-  color: rgba(100, 100, 100, 7);
+  background: var(--clr-black-disabled);
 }
 
 .section-left-disabled .info {
   font-size: var(--fs-big);
+  text-align: center;
 }
 .section-left-disabled button {
   opacity: 0;
@@ -615,6 +626,7 @@ main {
 
 .section-right-disabled {
   position: relative;
+  background: var(--clr-black-disabled);
 }
 
 .section-right-disabled::after {
@@ -627,7 +639,7 @@ main {
   content: "";
   position: absolute;
   border-radius: var(--br-normal);
-  background-color: var(--clr-black-disabled);
+  background: var(--clr-black-disabled);
 }
 
 .btn-disabled {

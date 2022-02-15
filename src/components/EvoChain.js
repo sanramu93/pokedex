@@ -4,7 +4,7 @@ import { fetchPokemon } from "../apis/pokeAPI";
 import { capitalize } from "../utilities/utilities";
 import notFound from "../img/not-found.png";
 
-export const EvoChain = ({ evoId }) => {
+export const EvoChain = ({ evoId, evoChainPokemonId }) => {
   const [evoPokemon, setEvoPokemon] = useState({});
 
   useEffect(() => {
@@ -20,14 +20,16 @@ export const EvoChain = ({ evoId }) => {
   }, [evoId]);
 
   return (
-    <figure className="evolution">
-      <img
-        className="evolution-image"
-        src={evoPokemon?.sprites?.front_default || notFound}
-      />
-      <figcaption className="evo-pokemon-name">
-        {capitalize(evoPokemon?.name)}
-      </figcaption>
-    </figure>
+    <a onClick={() => evoChainPokemonId(evoPokemon.id)}>
+      <figure className="evolution">
+        <img
+          className="evolution-image"
+          src={evoPokemon?.sprites?.front_default || notFound}
+        />
+        <figcaption className="evo-pokemon-name">
+          {capitalize(evoPokemon?.name)}
+        </figcaption>
+      </figure>
+    </a>
   );
 };

@@ -65,6 +65,10 @@ export const App = () => {
     debouncedSetId(randomID);
   };
 
+  const evoChainPokemonId = (id) => {
+    debouncedSetId(id);
+  };
+
   // Fetch Pokemon
   //  ----------------
   useEffect(() => {
@@ -128,6 +132,7 @@ export const App = () => {
               key={evo.species_name}
               pokemon={pokemon}
               evoId={evo.species_name}
+              evoChainPokemonId={evoChainPokemonId}
             />
           ))}
 

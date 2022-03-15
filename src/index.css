@@ -41,9 +41,9 @@ html {
   --clr-blue-dark-trans: hsla(208, 95%, 8%, 0.8);
   --clr-white: hsl(100, 100%, 99%);
   --clr-green-light: hsl(174, 62%, 47%);
-  --clr-red: hsl(353, 81%, 51%);
+  --clr-red: hsl(353, 81%, 43%);
   --clr-red-light: hsl(353, 81%, 70%);
-  --clr-red-dark: hsl(353, 81%, 40%);
+  --clr-red-dark: hsl(353, 81%, 30%);
   --clr-yellow: hsl(35, 100%, 55%);
   --clr-black-disabled: hsla(0, 0%, 0%, 0.7);
 
@@ -202,17 +202,7 @@ main {
 }
 
 .section {
-  background: #e52d27; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #b31217,
-    #e52d27
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #b31217,
-    #e52d27
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: var(--clr-red); /* fallback for old browsers */
 
   width: 50%;
   display: flex;
